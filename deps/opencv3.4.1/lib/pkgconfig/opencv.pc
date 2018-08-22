@@ -1,0 +1,14 @@
+# Package Information for pkg-config
+
+prefix=/usr
+exec_prefix=${prefix}
+libdir=${exec_prefix}/lib
+includedir_old=${prefix}/include/opencv
+includedir_new=${prefix}/include
+
+Name: OpenCV
+Description: Open Source Computer Vision Library
+Version: 3.4.1
+Libs: -L${exec_prefix}/lib -lopencv_aruco -lopencv_bgsegm -lopencv_bioinspired -lopencv_ccalib -lopencv_dpm -lopencv_face -lopencv_freetype -lopencv_fuzzy -lopencv_hdf -lopencv_hfs -lopencv_img_hash -lopencv_line_descriptor -lopencv_optflow -lopencv_reg -lopencv_rgbd -lopencv_saliency -lopencv_shape -lopencv_stereo -lopencv_stitching -lopencv_structured_light -lopencv_phase_unwrapping -lopencv_superres -lopencv_surface_matching -lopencv_tracking -lopencv_datasets -lopencv_plot -lopencv_ml -lopencv_videostab -lopencv_video -lopencv_photo -lopencv_ximgproc -lopencv_calib3d -lopencv_features2d -lopencv_highgui -lopencv_videoio -lopencv_flann -lopencv_xobjdetect -lopencv_imgcodecs -lopencv_objdetect -lopencv_xphoto -lopencv_imgproc -lopencv_core
+Libs.private: -ldl -lm -lpthread -lrt
+Cflags: -I${includedir_old} -I${includedir_new}
