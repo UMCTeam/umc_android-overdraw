@@ -50,54 +50,54 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/e/chendaole/node_opencv
+CMAKE_SOURCE_DIR = /cygdrive/f/zhangsheng/umc_android-overdraw
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/e/chendaole/node_opencv/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug
 
 #=============================================================================
-# Target rules for target CMakeFiles/node_opencv.dir
+# Target rules for target CMakeFiles/umc_android_overdraw.dir
 
 # All Build rule for target.
-CMakeFiles/node_opencv.dir/all:
-	$(MAKE) -f CMakeFiles/node_opencv.dir/build.make CMakeFiles/node_opencv.dir/depend
-	$(MAKE) -f CMakeFiles/node_opencv.dir/build.make CMakeFiles/node_opencv.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/e/chendaole/node_opencv/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target node_opencv"
-.PHONY : CMakeFiles/node_opencv.dir/all
+CMakeFiles/umc_android_overdraw.dir/all:
+	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/depend
+	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/build
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target umc_android_overdraw"
+.PHONY : CMakeFiles/umc_android_overdraw.dir/all
 
 # Include target in all.
-all: CMakeFiles/node_opencv.dir/all
+all: CMakeFiles/umc_android_overdraw.dir/all
 
 .PHONY : all
 
 # Build rule for subdir invocation for target.
-CMakeFiles/node_opencv.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/chendaole/node_opencv/cmake-build-debug/CMakeFiles 2
-	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/node_opencv.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/chendaole/node_opencv/cmake-build-debug/CMakeFiles 0
-.PHONY : CMakeFiles/node_opencv.dir/rule
+CMakeFiles/umc_android_overdraw.dir/rule: cmake_check_build_system
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles 2
+	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/umc_android_overdraw.dir/all
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles 0
+.PHONY : CMakeFiles/umc_android_overdraw.dir/rule
 
 # Convenience name for target.
-node_opencv: CMakeFiles/node_opencv.dir/rule
+umc_android_overdraw: CMakeFiles/umc_android_overdraw.dir/rule
 
-.PHONY : node_opencv
-
-# clean rule for target.
-CMakeFiles/node_opencv.dir/clean:
-	$(MAKE) -f CMakeFiles/node_opencv.dir/build.make CMakeFiles/node_opencv.dir/clean
-.PHONY : CMakeFiles/node_opencv.dir/clean
+.PHONY : umc_android_overdraw
 
 # clean rule for target.
-clean: CMakeFiles/node_opencv.dir/clean
+CMakeFiles/umc_android_overdraw.dir/clean:
+	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/clean
+.PHONY : CMakeFiles/umc_android_overdraw.dir/clean
+
+# clean rule for target.
+clean: CMakeFiles/umc_android_overdraw.dir/clean
 
 .PHONY : clean
 

@@ -39,19 +39,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/e/chendaole/node_opencv
+CMAKE_SOURCE_DIR = /cygdrive/f/zhangsheng/umc_android-overdraw
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/e/chendaole/node_opencv/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug
 
 #=============================================================================
 # Targets provided globally by CMake.
@@ -59,7 +59,7 @@ CMAKE_BINARY_DIR = /cygdrive/e/chendaole/node_opencv/cmake-build-debug
 # Special rule for the target rebuild_cache
 rebuild_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "Running CMake to regenerate build system..."
-	/cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
+	/cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -H$(CMAKE_SOURCE_DIR) -B$(CMAKE_BINARY_DIR)
 .PHONY : rebuild_cache
 
 # Special rule for the target rebuild_cache
@@ -70,7 +70,7 @@ rebuild_cache/fast: rebuild_cache
 # Special rule for the target edit_cache
 edit_cache:
 	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --cyan "No interactive CMake dialog available..."
-	/cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
+	/cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E echo No\ interactive\ CMake\ dialog\ available.
 .PHONY : edit_cache
 
 # Special rule for the target edit_cache
@@ -80,9 +80,9 @@ edit_cache/fast: edit_cache
 
 # The main all target
 all: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/chendaole/node_opencv/cmake-build-debug/CMakeFiles /cygdrive/e/chendaole/node_opencv/cmake-build-debug/CMakeFiles/progress.marks
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles/progress.marks
 	$(MAKE) -f CMakeFiles/Makefile2 all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/e/chendaole/node_opencv/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles 0
 .PHONY : all
 
 # The main clean target
@@ -111,17 +111,17 @@ depend:
 .PHONY : depend
 
 #=============================================================================
-# Target rules for targets named node_opencv
+# Target rules for targets named umc_android_overdraw
 
 # Build rule for target.
-node_opencv: cmake_check_build_system
-	$(MAKE) -f CMakeFiles/Makefile2 node_opencv
-.PHONY : node_opencv
+umc_android_overdraw: cmake_check_build_system
+	$(MAKE) -f CMakeFiles/Makefile2 umc_android_overdraw
+.PHONY : umc_android_overdraw
 
 # fast build rule for target.
-node_opencv/fast:
-	$(MAKE) -f CMakeFiles/node_opencv.dir/build.make CMakeFiles/node_opencv.dir/build
-.PHONY : node_opencv/fast
+umc_android_overdraw/fast:
+	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/build
+.PHONY : umc_android_overdraw/fast
 
 src/main.o: src/main.cpp.o
 
@@ -129,7 +129,7 @@ src/main.o: src/main.cpp.o
 
 # target to build an object file
 src/main.cpp.o:
-	$(MAKE) -f CMakeFiles/node_opencv.dir/build.make CMakeFiles/node_opencv.dir/src/main.cpp.o
+	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/src/main.cpp.o
 .PHONY : src/main.cpp.o
 
 src/main.i: src/main.cpp.i
@@ -138,7 +138,7 @@ src/main.i: src/main.cpp.i
 
 # target to preprocess a source file
 src/main.cpp.i:
-	$(MAKE) -f CMakeFiles/node_opencv.dir/build.make CMakeFiles/node_opencv.dir/src/main.cpp.i
+	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/src/main.cpp.i
 .PHONY : src/main.cpp.i
 
 src/main.s: src/main.cpp.s
@@ -147,7 +147,7 @@ src/main.s: src/main.cpp.s
 
 # target to generate assembly for a file
 src/main.cpp.s:
-	$(MAKE) -f CMakeFiles/node_opencv.dir/build.make CMakeFiles/node_opencv.dir/src/main.cpp.s
+	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/src/main.cpp.s
 .PHONY : src/main.cpp.s
 
 # Help Target
@@ -157,7 +157,7 @@ help:
 	@echo "... clean"
 	@echo "... depend"
 	@echo "... rebuild_cache"
-	@echo "... node_opencv"
+	@echo "... umc_android_overdraw"
 	@echo "... edit_cache"
 	@echo "... src/main.o"
 	@echo "... src/main.i"
