@@ -4,7 +4,7 @@ set(CMAKE_DEPENDS_LANGUAGES
   )
 # The set of files for implicit dependencies of each language:
 set(CMAKE_DEPENDS_CHECK_CXX
-  "/cygdrive/f/zhangsheng/umc_android-overdraw/src/main.cpp" "/cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles/umc_android_overdraw.dir/src/main.cpp.o"
+  "/cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/src/main.cpp" "/cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/cmake-build-debug/CMakeFiles/umc_android_overdraw.dir/src/main.cpp.o"
   )
 set(CMAKE_CXX_COMPILER_ID "GNU")
 

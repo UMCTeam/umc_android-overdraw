@@ -6,5 +6,5 @@ CXX_FLAGS = -g   -std=gnu++11
 
 CXX_DEFINES = 
 
-CXX_INCLUDES = -I/cygdrive/f/zhangsheng/umc_android-overdraw/./deps -I/cygdrive/f/zhangsheng/umc_android-overdraw/./deps/opencv3.4.1/include 
+CXX_INCLUDES = -I/cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/./deps -I/cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/./deps/opencv3.4.1/include 
 

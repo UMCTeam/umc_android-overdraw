@@ -110,7 +110,7 @@ Mat filter(Mat& src) {
     int height = src.size().height;
 
     Mat border, sharpen, edge, grayImage;
-    copyMakeBorder(src, border, 20, 20, 20, 20, BORDER_CONSTANT);
+    copyMakeBorder(src, border, 20, 20, 20, 20, BORDER_CONSTANT, Scalar(255, 255, 255));
 
     //图片降噪
     blur(border, border,Size(2, 2));
@@ -125,29 +125,27 @@ Mat filter(Mat& src) {
     cvtColor(sharpen, grayImage, COLOR_BGR2GRAY);
 
     //使用canny 算子,进行边缘检测
-    Canny(grayImage, edge, 80, 80);
+    Canny(grayImage, edge, 50, 50);
 
     std::vector<std::vector<Point>> contours;
     std::vector<Vec4i> hierarchy;
 
     //提取轮廓
     findContours(edge, contours, hierarchy, RETR_CCOMP, CHAIN_APPROX_SIMPLE);
-    
-    //在黑布上绘制矩形
+
+  /*  //在黑布上绘制矩形
     Mat polyPic = Mat::zeros(border.size(), CV_8UC3);
     for (int index = 0; index < contours.size(); index++){
         std::vector<int> hull;
         //提取轮廓边角数量
         convexHull(contours[index], hull, false, true);
 
-        if (hull.size() == 4) {
-            drawContours(polyPic, contours, index, Scalar(0,0,255), 2);
-        }
-    }
+        drawContours(polyPic, contours, index, Scalar(0,0,255), 2);
+    }*/
 
     for (int index = 0; index < contours.size(); ++index) {
         //获取十分之一大小的控件
-        int standard_size = width * height  /100;
+        int screen_size = width * height;
         std::vector<Point> polyContour;
         std::vector<int> hull;
 
@@ -157,18 +155,18 @@ Mat filter(Mat& src) {
         //提取轮廓边角数量
         convexHull(polyContour, hull, false, true);
 
-        if (contourArea(polyContour) > standard_size) {
+        //移除太小的组件
+        double area = contourArea(polyContour);
+        if ( area < (screen_size / 3)  &&  area > (screen_size / 100)) {
             std::vector<Point> pos = contours[index];
-
-            //截取组件图片
-            Rect rect(pos[0].x, pos[0].y, abs((pos[2].x - pos[0].x)), abs((pos[2].y - pos[0].y)));
+            Rect rect = boundingRect(Mat(polyContour));
             Mat component = border(rect);
 
             std::stringstream filename;
             filename << rand() * 10000;
-            imwrite("c:\\tmp\\ " + filename.str() + "component.png", component);
+            imwrite("d:\\tmp\\ " + filename.str() + "component.png", component);
 
-            rectangle(border, polyContour.at(0), polyContour.at(2), Scalar(255, 0, 0));
+           // rectangle(border, polyContour.at(0), polyContour.at(2), Scalar(255, 0, 0));
 
             for (; rect.width > 10; ) {
                 //获取组件颜色的平局值， 方差
@@ -197,10 +195,7 @@ Mat filter(Mat& src) {
         }
     }
 
-    imwrite("c:\\test.png", edge);
-
-
-
+    imwrite("d:\\test.png", border);
 
     CvMat cvmat = border;
     IplImage* hsv = cvCreateImage(cvGetSize(&cvmat), 8, 3);

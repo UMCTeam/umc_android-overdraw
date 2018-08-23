@@ -50,19 +50,19 @@ cmake_force:
 SHELL = /bin/sh
 
 # The CMake executable.
-CMAKE_COMMAND = /cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe
+CMAKE_COMMAND = /cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe
 
 # The command to remove a file.
-RM = /cygdrive/c/Users/Administrator/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E remove -f
+RM = /cygdrive/c/Users/chendaole/.CLion2018.2/system/cygwin_cmake/bin/cmake.exe -E remove -f
 
 # Escaping for special characters.
 EQUALS = =
 
 # The top-level source directory on which CMake was run.
-CMAKE_SOURCE_DIR = /cygdrive/f/zhangsheng/umc_android-overdraw
+CMAKE_SOURCE_DIR = /cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw
 
 # The top-level build directory on which CMake was run.
-CMAKE_BINARY_DIR = /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug
+CMAKE_BINARY_DIR = /cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/cmake-build-debug
 
 #=============================================================================
 # Target rules for target CMakeFiles/umc_android_overdraw.dir
@@ -71,7 +71,7 @@ CMAKE_BINARY_DIR = /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug
 CMakeFiles/umc_android_overdraw.dir/all:
 	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/depend
 	$(MAKE) -f CMakeFiles/umc_android_overdraw.dir/build.make CMakeFiles/umc_android_overdraw.dir/build
-	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target umc_android_overdraw"
+	@$(CMAKE_COMMAND) -E cmake_echo_color --switch=$(COLOR) --progress-dir=/cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/cmake-build-debug/CMakeFiles --progress-num=1,2 "Built target umc_android_overdraw"
 .PHONY : CMakeFiles/umc_android_overdraw.dir/all
 
 # Include target in all.
@@ -81,9 +81,9 @@ all: CMakeFiles/umc_android_overdraw.dir/all
 
 # Build rule for subdir invocation for target.
 CMakeFiles/umc_android_overdraw.dir/rule: cmake_check_build_system
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles 2
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/cmake-build-debug/CMakeFiles 2
 	$(MAKE) -f CMakeFiles/Makefile2 CMakeFiles/umc_android_overdraw.dir/all
-	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug/CMakeFiles 0
+	$(CMAKE_COMMAND) -E cmake_progress_start /cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/cmake-build-debug/CMakeFiles 0
 .PHONY : CMakeFiles/umc_android_overdraw.dir/rule
 
 # Convenience name for target.
