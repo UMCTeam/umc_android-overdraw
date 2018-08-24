@@ -14,7 +14,7 @@ namespace ncv {
     class Logger {
     public:
         Logger() {
-            m_plogger = stderr_color_mt("ncv");
+            m_plogger = stderr_color_mt("uao");
         }
 
         ~Logger() {

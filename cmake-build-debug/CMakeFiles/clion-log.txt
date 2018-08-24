@@ -1,4 +1,4 @@
-C:\Users\chendaole\.CLion2018.2\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw
+C:\Users\Administrator\.CLion2018.2\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_TYPE=Debug -G "CodeBlocks - Unix Makefiles" /cygdrive/f/zhangsheng/umc_android-overdraw
 -- The C compiler identification is GNU 7.3.0
 -- The CXX compiler identification is GNU 7.3.0
 -- Check for working C compiler: /usr/bin/cc
@@ -15,4 +15,4 @@ C:\Users\chendaole\.CLion2018.2\system\cygwin_cmake\bin\cmake.exe -DCMAKE_BUILD_
 -- Detecting CXX compile features - done
 -- Configuring done
 -- Generating done
--- Build files have been written to: /cygdrive/c/Users/chendaole/Documents/GitHub/umc_android-overdraw/cmake-build-debug
+-- Build files have been written to: /cygdrive/f/zhangsheng/umc_android-overdraw/cmake-build-debug

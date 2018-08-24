@@ -1,8 +1,12 @@
 cmake_minimum_required(VERSION 3.12)
-project(umc_android_overdraw)
+project(uao)
 
 set(CMAKE_CXX_STANDARD 11)
+
+#版本号
 set(NODE_OPENCV_VERSION 1)
+
+#设置输出目录
 set(EXECUTABLE_OUTPUT_PATH  ${PROJECT_SOURCE_DIR}/out)
 
 #库文件
@@ -20,6 +24,6 @@ configure_file(
 #配置静态库目录
 link_directories(./deps/opencv3.4.1/lib)
 
-add_executable(umc_android_overdraw src/main.cpp src/logger.h)
+add_executable(uao src/main.cpp src/logger.h)
 #添加静态库
-target_link_libraries(umc_android_overdraw ${OPENCV3.4.1_LIB})
+target_link_libraries(uao ${OPENCV3.4.1_LIB})

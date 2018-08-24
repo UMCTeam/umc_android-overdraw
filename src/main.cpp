@@ -18,12 +18,11 @@ using namespace ncv;
 using namespace cv;
 
 void match(char* tpl, char* dst);
-Mat filter(Mat& src);
-std::string abs_path(std::string path);
+float overdrawAnalyze (Mat& src);
 
 struct MODE_TYPE {
-    char* MATCH = "match";
-    char* EXR  = "exr";
+    const char* MATCH = "match";
+    const char* EXR  = "exr";
 } mode_type;
 
 int main(int argc, char** argv) {
@@ -68,11 +67,11 @@ int main(int argc, char** argv) {
     } else if (!strcasecmp(mode, mode_type.EXR)) {
         //过滤无用色值
         Mat mat_src = imread(dst);
-        Mat mat_filter = filter(mat_src);
-        imwrite("c:\\a.png", mat_filter);
+        float percent = overdrawAnalyze(mat_src);
+        std::cout << percent << std::endl;
     }
 
-    logger->warn("exit");
+    //logger->warn("exit");
     return  0;
 }
 
@@ -105,139 +104,42 @@ void match(char* tpl, char* dst) {
     waitKey(0);
 }
 
-Mat filter(Mat& src) {
-    int width = src.size().width;
-    int height = src.size().height;
-
-    Mat border, sharpen, edge, grayImage;
-    copyMakeBorder(src, border, 20, 20, 20, 20, BORDER_CONSTANT, Scalar(255, 255, 255));
-
-    //图片降噪
-    blur(border, border,Size(2, 2));
-
-    //锐化处理, 增强边缘
-    Mat kernel = (Mat_<char>(3,3) << 0, -1 ,0,
-                                     -1, 5, -1,
-                                     0, -1, 0);
-    filter2D(border,sharpen,border.depth(),kernel, Point(1, 1));
-
-    //原始图片转化为灰度图
-    cvtColor(sharpen, grayImage, COLOR_BGR2GRAY);
-
-    //使用canny 算子,进行边缘检测
-    Canny(grayImage, edge, 50, 50);
-
-    std::vector<std::vector<Point>> contours;
-    std::vector<Vec4i> hierarchy;
-
-    //提取轮廓
-    findContours(edge, contours, hierarchy, RETR_CCOMP, CHAIN_APPROX_SIMPLE);
-
-  /*  //在黑布上绘制矩形
-    Mat polyPic = Mat::zeros(border.size(), CV_8UC3);
-    for (int index = 0; index < contours.size(); index++){
-        std::vector<int> hull;
-        //提取轮廓边角数量
-        convexHull(contours[index], hull, false, true);
-
-        drawContours(polyPic, contours, index, Scalar(0,0,255), 2);
-    }*/
-
-    for (int index = 0; index < contours.size(); ++index) {
-        //获取十分之一大小的控件
-        int screen_size = width * height;
-        std::vector<Point> polyContour;
-        std::vector<int> hull;
-
-        //使用多边形矩形包裹,提取的轮廓
-        approxPolyDP(contours[index], polyContour, 2, true);
-
-        //提取轮廓边角数量
-        convexHull(polyContour, hull, false, true);
-
-        //移除太小的组件
-        double area = contourArea(polyContour);
-        if ( area < (screen_size / 3)  &&  area > (screen_size / 100)) {
-            std::vector<Point> pos = contours[index];
-            Rect rect = boundingRect(Mat(polyContour));
-            Mat component = border(rect);
-
-            std::stringstream filename;
-            filename << rand() * 10000;
-            imwrite("d:\\tmp\\ " + filename.str() + "component.png", component);
-
-           // rectangle(border, polyContour.at(0), polyContour.at(2), Scalar(255, 0, 0));
-
-            for (; rect.width > 10; ) {
-                //获取组件颜色的平局值， 方差
-                cv::Scalar     mean;
-                cv::Scalar     dev;
-                meanStdDev(component, mean, dev);
-
-                //红色区域色值趋于稳定, 色值偏于红色
-                if (dev.val[2] < 0.35) {
-                    int blue = mean.val[0];
-                    int green = mean.val[1];
-                    int red = mean.val[2];
-                    int offset = 100;
-
-                    //色值是否偏于红色
-                    if (blue < (red - offset) && green < (red - offset) && red > 250) {
-                        std::cout << "overdraw" << std::endl;
-                    }
-                    break;
-                }
-
-                rect.width *= 0.8;
-                rect.height *= 0.8;
-                component = border(rect);
-            }
-        }
-    }
-
-    imwrite("d:\\test.png", border);
-
-    CvMat cvmat = border;
+float overdrawAnalyze(Mat& src) {
+    CvMat cvmat = src;
     IplImage* hsv = cvCreateImage(cvGetSize(&cvmat), 8, 3);
+   // IplImage* dst_hsv = cvCreateImage(cvGetSize(&cvmat), 8, 3);
     cvGetImage(&cvmat, hsv);
+
+    int width  = hsv->width;
+    int height = hsv->height;
+    long double  red_number = 0;
+
+    //阈值 0 - 255；
+    int limit  = 100;
 
     for (int i = 0; i < height ; ++i) {
         for (int j = 0; j < width; ++j) {
-            CvScalar s_hsv = cvGet2D(hsv, i, j);
-            CvScalar s;
+            CvScalar color = cvGet2D(hsv, i, j);
+            double b = color.val[0];
+            double g = color.val[1];
+            double r = color.val[2];
 
-            if (s_hsv.val[0] < 235) {
-                if (s_hsv.val[1] > 138 || s_hsv.val[1] < 118) {
-                    if (s_hsv.val[2] > 137 || s_hsv.val[2] < 117) {
-                        s.val[0] = 255;
-                        s.val[1] = 255;
-                        s.val[2] = 255;
-                        cvSet2D(hsv, i, j, s);
-                        continue;
-                    }
-                }
+            double dst_r = (1 - (abs(g - b)/ 255.0)) * (1 - (g + b)/(500.0)) * r;
+
+            if (dst_r > limit) {
+                ++ red_number;
             }
 
-            s.val[0] = 0;
-            s.val[1] = 0;
-            s.val[2] = 0;
-            cvSet2D(hsv, i, j, s);
+            //dst_r = dst_r > limit ? 255 : 0;
+            //CvScalar dst_color(0, 0, dst_r);
+            //cvSet2D(dst_hsv, i, j, dst_color);
         }
     }
 
-    CvMat* dst = cvCreateMat(hsv->height, hsv->width, CV_8UC3);
-    cvConvert(hsv, dst);
-    return Mat(dst->rows, dst->cols, dst->type, dst->data.fl);
-}
+    //CvMat* dst = cvCreateMat(dst_hsv->height, dst_hsv->width, CV_8UC3);
+    //cvConvert(dst_hsv, dst);
 
-std::string abs_path(std::string path) {
-#define MAX_PATH  40960
-    char buffer[MAX_PATH] = {0};
+    //imwrite("c:\\test.png", Mat(dst->rows, dst->cols, dst->type, dst->data.fl));
 
-    getcwd(buffer, MAX_PATH);
-    std::strcat(buffer, path.c_str());
-    #ifdef __CYGWIN__
-        //TODO:绝对路径转化
-    #endif
-    return  std::string(buffer);
+    return red_number / (float)(hsv->width * hsv->height);
 }
